@@ -45,14 +45,24 @@
       </ul>
 
       <ul class="navbar-nav">
+        <% if current_user %>
+          <li class="nav-item">
+            <a class="nav-link disabled">Signed in as <%= current_user.first_name %></a>
+          </li>
+          <li class="nav-item">
+           <%= link_to "Logout", logout_path, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', login_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Signup', signup_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to 'About us', about_index_path, class: "nav-link" %>
         </li>
-        <% if current_user %>
-        Signed in as <%= current_user.first_name %> <%= link_to "Logout", '/logout' %>
-      <% else %>
-        <%= link_to 'Login', '/login' %>  <%= link_to 'Signup', '/signup' %>
-      <% end %>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-danger"
