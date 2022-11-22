@@ -96,6 +96,13 @@ RSpec.describe User, type: :model do
         
         expect(user_auth.email).to eq @user.email
       end
+
+      it "autheticates when email has wrong case (a or A)" do
+        @user.save!
+        user_auth = User.authenticate_with_credentials("eMaIl@EMAIL.CoM", @user.password)
+
+        expect(user_auth.email).to eq @user.email
+      end
     end
 
   end
