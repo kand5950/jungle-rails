@@ -17,5 +17,13 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
       expect(@user.errors.full_messages).to be_empty
     end
+
+    it "expects error when passwords dont match" do
+      @user.password = "hello"
+      @user.password_confirmation = "hi"
+      expect(@user).not_to be_valid
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+
   end
 end
