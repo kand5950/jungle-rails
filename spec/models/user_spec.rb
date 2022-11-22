@@ -25,5 +25,35 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
+    it "expects error when no password is provided" do
+      @user.password = nil
+      expect(@user).not_to be_valid
+      expect(@user.errors.full_messages).to include("Password can't be blank")
+    end
+
+    it "expects error when no password_confirmation is provided" do
+      @user.password_confirmation = nil
+      expect(@user).not_to be_valid
+      expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
+    end
+
+    it "expects error when no email is provided" do
+      @user.email = nil
+      expect(@user).not_to be_valid
+      expect(@user.errors.full_messages).to include("Email can't be blank")
+    end
+
+    it "expects error when no first name is provided" do
+      @user.first_name = nil
+      expect(@user).not_to be_valid
+      expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it "expects error when no last name is provided" do
+      @user.last_name = nil
+      expect(@user).not_to be_valid
+      expect(@user.errors.full_messages).to include("Last name can't be blank")
+    end
+  
   end
 end
