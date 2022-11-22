@@ -54,6 +54,18 @@ RSpec.describe User, type: :model do
       expect(@user).not_to be_valid
       expect(@user.errors.full_messages).to include("Last name can't be blank")
     end
-  
+    
+    it "expects error when a an email is already in database" do
+      @user2 = User.create(
+        first_name: "testFirstName",
+        last_name: "testLastName",
+        email: "EMAIL@EMAIL.COM",
+        password: "hello",
+        password_confirmation: "hello",
+      )
+      expect(@user2).not_to be_valid
+      expect(@user2.errors.full_messages).to include("Email has already been taken")
+    end
+
   end
 end
