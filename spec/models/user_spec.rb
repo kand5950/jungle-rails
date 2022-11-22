@@ -77,10 +77,17 @@ RSpec.describe User, type: :model do
     describe '.authenticate_with_credentials' do
 
       it "authenticates when credentials are correct" do
-      @user.save!
-      user_auth = User.authenticate_with_credentials(@user.email, @user.password)
+        @user.save!
+        user_auth = User.authenticate_with_credentials(@user.email, @user.password)
 
-      expect(user_auth).to eq @user
+        expect(user_auth).to eq @user
+      end
+
+      it "doesn't authenticate when invalid email entry" do
+        @user.save!
+        user_auth = User.authenticate_with_credentials("test@test.com", @user.password)
+
+        expect(user_auth).to eq nil
       end
     end
 
