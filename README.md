@@ -1,6 +1,19 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
+The Jungle web application is a mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example. This project was meant to be an introduction to the role of a junior developer in the real world, where one could step into a new job and might need to learn a new tech stack.
+
+I was provided with a pre built app in which I had to seek out and correct various errors. Errors that I fixed include the following:
+
+Money formatting and adding dollar signs to all prices across the site.
+Modified checkout cart page so that checkout button is only shown if items are in cart. If no items in cart user met with an "empty cart" message.
+Added a sold out badge for when an item has 0 quantity.
+Adjusted the order show page so that it displays line items in order, image, name, description, respective quantities, final amount for order and the email that was used for the purchase.
+Implemented admin security using http basic authentication for admin related tasks (dashboard, product addition, category creation)
+Added landing page for admin dashboard. Once logged in with http authentication, page demonstrates basic stats of how many products are in database and how many categories are in database.
+Added an about page that provides more information about the store.
+Added the ability to create new plant categories as an admin.
+Added in user authentication, allowing user to register and login. All passwords are hashed using bcrypt.
+Incorporated various RSPEC and Cypress tests to ensure various functions and app requirements worked correctly.
 
 ## Setup
 
